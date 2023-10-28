@@ -1,4 +1,12 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
-<a href="/auth/signup">Sign Up</a>
-<a href="/auth/login">Login</a>
+{{#unless user}}
+  <a href="/auth/signup"><button>Sign Up</button></a>
+  <a href="/auth/login"><button>Login</button></a>
+{{/unless}}
+{{#if user}}
+  <a href="/main"><button>Main Page</button></a>
+  <form id="logout-form" action="auth/logout" method="POST">
+    <button>Logout</button>
+  </form>
+{{/if}}
